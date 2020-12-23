@@ -1,2 +1,2 @@
 # JS-Gameengine
-A basic 2D js eameengine
+A basic 2D js gameengine
