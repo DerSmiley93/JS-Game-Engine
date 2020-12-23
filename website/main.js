@@ -8,7 +8,7 @@ class GameEngine {
     //time betwen frames
     DeltaTime  = 0;
 
-    GameObjects = new Array();
+    gameObjects = new Array();
 
     constructor(HtmlElement, width, height) {
         this.perentHtmlElement = HtmlElement;
@@ -37,8 +37,12 @@ class GameEngine {
     render(){
 
     }
-    //TODO=> gameObject Update
+    //updating each GameObject
     update(){
+        
+        for(var i = 0; i < this.gameObjects.length; i++){
+            this.gameObjects[i].update();
+        }
     }
 
 }
@@ -63,6 +67,6 @@ class GameObject{
 
 }
 
-ge = new Gameengine(document.body,200,200);
+ge = new GameEngine(document.body,200,200);
 
 ge.init();
