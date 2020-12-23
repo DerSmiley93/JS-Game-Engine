@@ -1,8 +1,11 @@
-class Gameengine {
+class GameEngine {
     perentHtmlElement;
+    //canvas width
     width;
+    //canvas height
     height;
     isRunning = false;
+    //time betwen frames
     DeltaTime  = 0;
 
     GameObjects = new Array();
@@ -12,12 +15,12 @@ class Gameengine {
         this.width = width;
         this.height = height;
     }
-
+    
     init() {
         this.perentHtmlElement.innerHTML = '<canvas width="' + this.width + '" height="' + this.height + '"></canvas>'
         this.tick()
     }
-
+    //main Tick
     tick(){
         var oldTime = Date.now();
         setInterval(() => {
@@ -30,20 +33,36 @@ class Gameengine {
                 }
         });
     }
-
+    //TODO=> gameObject rendering
     render(){
 
     }
-
+    //TODO=> gameObject Update
     update(){
-        console.log(this.DeltaTime)
     }
 
 }
 
+//GameObject structure = (posX:number,posY:number,imgPath:string,update:function)
+class GameObject{
+    imgPath = "";
+    scaleX = 1;
+    scaleY = 1;
+    posX = 0;
+    posY = 0;
+    layer = 0;
 
-test = new Gameengine(document.body,200,200);
+    update = new Function();
 
+    constructor(posX, posY, imgPath, update){
+        this.posX = posX;
+        this.posY = posY;
+        this.imgPath = imgPath;
+        this.update = update;
+    }
 
-test.init();
-test.isRunning = true;
+}
+
+ge = new Gameengine(document.body,200,200);
+
+ge.init();
