@@ -1,3 +1,4 @@
+
 class GameEngine {
     perentHtmlElement;
     //canvas width
@@ -21,7 +22,7 @@ class GameEngine {
     }
 
     init() {
-        this.perentHtmlElement.innerHTML = '<canvas id="canvas" style="background-color: #aaaaaa" width="' + this.width + '" height="' + this.height + '"></canvas>'
+        this.perentHtmlElement.innerHTML = '<canvas id="canvas" width="' + this.width + '" height="' + this.height + '"></canvas>'
         this.tick();
         this.canvas = document.getElementById('canvas');
         this.context = canvas.getContext("2d");
@@ -103,7 +104,9 @@ class GameObject {
 
 }
 
-ge = new GameEngine(document.body, 500, 500);
+const togleButton = document.getElementById('runTogle')
+
+ge = new GameEngine(document.getElementById('game'), 500, 500);
 
 ge.init();
 
@@ -115,3 +118,15 @@ function update() {
 
 gm = new GameObject("player", 0, 0, 50, 50, null, update);
 ge.gameObjects.push(gm);
+
+togleButton.innerHTML = "Play"
+
+function runTogle(){
+    if(ge.isRunning){
+        ge.isRunning = false;
+        togleButton.innerHTML = "Play"
+    }else{
+        ge.isRunning = true;
+        togleButton.innerHTML = "Pause"
+    }
+}
